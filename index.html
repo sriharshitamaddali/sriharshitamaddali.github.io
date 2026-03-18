@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Harshita Maddali</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a1a;
+    --ink-mid: #444;
+    --ink-light: #666;
+    --ink-faint: #999;
+    --rule: #e8e8e4;
+    --bg-page: #f7f7f4;
+    --bg-card: #ffffff;
+    --bg-soft: #f2f2ee;
+    --tag-bg: #efefeb;
+    --tag-text: #555;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #f0f0ee;
+      --ink-mid: #c8c8c4;
+      --ink-light: #9a9a96;
+      --ink-faint: #666;
+      --rule: #2e2e2a;
+      --bg-page: #161614;
+      --bg-card: #1e1e1c;
+      --bg-soft: #252522;
+      --tag-bg: #2a2a26;
+      --tag-text: #aaa;
+    }
+  }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .wrap { max-width: 100%; padding: 40px 48px; }
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg-page);
+    color: var(--ink);
+    min-height: 100vh;
+    padding: 48px 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    background: var(--bg-card);
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 56px 64px;
+  }
+
+  .header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 32px;
+    align-items: start;
+    padding-bottom: 32px;
+    border-bottom: 1.5px solid var(--ink);
+    margin-bottom: 32px;
+  }
+
+  .name {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(26px, 5vw, 40px);
+    letter-spacing: -0.5px;
+    line-height: 1.05;
+    color: var(--ink);
+  }
+
+  .title-line {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-top: 9px;
+  }
+
+  .links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 7px;
+    padding-top: 4px;
+  }
+
+  .link-row { display: flex; align-items: center; gap: 8px; }
+
+  .link-label {
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .links a {
+    font-size: 12px;
+    color: var(--ink-light);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .links a:hover { color: var(--ink); text-decoration: underline; }
+
+  .about {
+    font-size: 14px;
+    line-height: 1.9;
+    color: var(--ink-light);
+    font-weight: 300;
+    margin-bottom: 36px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .about strong { color: var(--ink); font-weight: 500; }
+
+  .section {
+    margin-bottom: 32px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  .section-label {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 20px;
+  }
+
+  .principles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px 48px;
+  }
+
+  .principle { display: flex; gap: 12px; align-items: flex-start; }
+
+  .dot {
+    width: 4px; height: 4px;
+    background: var(--ink);
+    border-radius: 50%;
+    margin-top: 8px;
+    flex-shrink: 0;
+  }
+
+  .p-title { font-size: 13px; font-weight: 400; color: var(--ink); line-height: 1.4; }
+  .p-sub { font-size: 11px; color: var(--ink-faint); margin-top: 2px; font-weight: 300; }
+
+  .skills {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .skill-col { display: flex; flex-direction: column; gap: 5px; }
+
+  .skill-head {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 3px;
+  }
+
+  .skill-item { font-size: 12px; color: var(--ink-light); font-weight: 300; line-height: 1.7; }
+
+  .project {
+    background: var(--bg-soft);
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .proj-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 17px;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+
+  .proj-desc {
+    font-size: 12.5px;
+    color: var(--ink-light);
+    line-height: 1.7;
+    font-weight: 300;
+    max-width: 500px;
+  }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+
+  .tag {
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--tag-text);
+    background: var(--tag-bg);
+    padding: 3px 8px;
+  }
+
+  .proj-link {
+    font-size: 11px;
+    color: var(--ink-faint);
+    text-decoration: none;
+    white-space: nowrap;
+    letter-spacing: 0.04em;
+    flex-shrink: 0;
+    padding-top: 2px;
+    transition: color 0.15s;
+  }
+
+  .proj-link:hover { color: var(--ink); }
+
+  .certs { display: flex; flex-direction: column; gap: 10px; }
+
+  .cert { display: flex; align-items: center; gap: 10px; }
+
+  .cert-dot { width: 5px; height: 5px; background: var(--ink); border-radius: 50%; flex-shrink: 0; }
+
+  .cert-text { font-size: 13px; color: var(--ink-light); font-weight: 300; }
+  .cert-text strong { color: var(--ink); font-weight: 500; }
+
+  .philosophy {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--ink-faint);
+    letter-spacing: 0.01em;
+  }
+
+  /* TABLET */
+  @media (max-width: 680px) {
+    body { padding: 0; }
+    .wrap { padding: 40px 32px; }
+
+    .header { grid-template-columns: 1fr; gap: 20px; }
+    .links { align-items: flex-start; }
+
+    .principles { grid-template-columns: 1fr; gap: 14px; }
+    .skills { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* MOBILE */
+  @media (max-width: 420px) {
+    .wrap { padding: 28px 20px; }
+    .skills { grid-template-columns: 1fr 1fr; gap: 16px; }
+    .project { flex-direction: column; gap: 12px; }
+    .proj-link { align-self: flex-start; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="header">
+    <div>
+      <div class="name">Harshita Maddali</div>
+      <div class="title-line">Full-Stack Software Engineer &nbsp;·&nbsp; 6 Years</div>
+    </div>
+    <div class="links">
+      <div class="link-row">
+        <span class="link-label">GitHub</span>
+        <a href="https://github.com/sriharshitamaddali">github.com/sriharshitamaddali</a>
+      </div>
+      <div class="link-row">
+        <span class="link-label">LinkedIn</span>
+        <a href="https://www.linkedin.com/in/harshita-maddali-160741192/">linkedin.com/in/harshita-maddali</a>
+      </div>
+      <div class="link-row">
+        <span class="link-label">Cert</span>
+        <a href="https://www.credly.com/badges/41fd87ba-3842-4b55-86e2-aa9465bf8bc8">AWS Solutions Architect</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="about">
+    Full-Stack Software Engineer with <strong>6 years</strong> building scalable distributed systems and cloud-native applications — from Java Spring Boot microservices to Angular and React frontends. I've worked across developer platforms at <strong>ServiceNow</strong>, cloud security infrastructure at <strong>Cloud Nova Technologies</strong>, and API platform engineering at <strong>Capital One</strong>. I bring a <strong>product mindset</strong> to engineering — I think about the problem it solves and the person it serves.
+  </div>
+
+  <div class="section">
+    <div class="section-label">Engineering Principles</div>
+    <div class="principles">
+      <div class="principle">
+        <div class="dot"></div>
+        <div>
+          <div class="p-title">Test early, test often</div>
+          <div class="p-sub">Quality is built in, not bolted on</div>
+        </div>
+      </div>
+      <div class="principle">
+        <div class="dot"></div>
+        <div>
+          <div class="p-title">Build for the user, not the ticket</div>
+          <div class="p-sub">The problem behind the requirement matters</div>
+        </div>
+      </div>
+      <div class="principle">
+        <div class="dot"></div>
+        <div>
+          <div class="p-title">Automate the routine</div>
+          <div class="p-sub">Technology exists to eliminate friction</div>
+        </div>
+      </div>
+      <div class="principle">
+        <div class="dot"></div>
+        <div>
+          <div class="p-title">Own it end to end</div>
+          <div class="p-sub">From design to deployment to monitoring</div>
+        </div>
+      </div>
+      <div class="principle">
+        <div class="dot"></div>
+        <div>
+          <div class="p-title">Simple until it needs to be complex</div>
+          <div class="p-sub">Clarity over cleverness</div>
+        </div>
+      </div>
+      <div class="principle">
+        <div class="dot"></div>
+        <div>
+          <div class="p-title">Document as you build</div>
+          <div class="p-sub">Future you is a different person</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Technical Snapshot</div>
+    <div class="skills">
+      <div class="skill-col">
+        <div class="skill-head">Backend</div>
+        <div class="skill-item">Java · Spring Boot</div>
+        <div class="skill-item">Microservices · REST</div>
+        <div class="skill-item">Python · Node.js</div>
+      </div>
+      <div class="skill-col">
+        <div class="skill-head">Frontend</div>
+        <div class="skill-item">Angular · React</div>
+        <div class="skill-item">TypeScript · JavaScript</div>
+        <div class="skill-item">HTML5 · CSS3</div>
+      </div>
+      <div class="skill-col">
+        <div class="skill-head">Cloud & DevOps</div>
+        <div class="skill-item">AWS · Docker</div>
+        <div class="skill-item">Splunk · New Relic</div>
+      </div>
+      <div class="skill-col">
+        <div class="skill-head">AI / ML</div>
+        <div class="skill-item">LangChain · RAG</div>
+        <div class="skill-item">OpenAI · Claude API</div>
+        <div class="skill-item">Vector Databases</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Featured Project</div>
+    <div class="project">
+      <div>
+        <div class="proj-name">FAQtory</div>
+        <div class="proj-desc">RAG-based application that ingests PDF documents and generates audience-specific FAQs tailored to Technical, Executive, or Non-Technical users — adding context-awareness to LLM output to make it immediately useful.</div>
+        <div class="tags">
+          <span class="tag">LangChain</span>
+          <span class="tag">RAG</span>
+          <span class="tag">Claude / OpenAI</span>
+          <span class="tag">Chroma DB</span>
+          <span class="tag">Python</span>
+        </div>
+      </div>
+      <a class="proj-link" href="https://github.com/sriharshitamaddali/FAQtory-app">github →</a>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Certifications & Awards</div>
+    <div class="certs">
+      <div class="cert">
+        <div class="cert-dot"></div>
+        <div class="cert-text"><strong>AWS Solutions Architect</strong> — Associate · 2025</div>
+      </div>
+      <div class="cert">
+        <div class="cert-dot"></div>
+        <div class="cert-text"><strong>Vicuna Award</strong> — ServiceNow · 2020 · UI/UX enhancements and developer experience</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="philosophy">
+    "I think from first principles — why before how, always."
+  </div>
+
+</div>
+</body>
+</html>
